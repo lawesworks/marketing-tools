@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armada QRCode Generator</title>
+  <link rel="stylesheet" href="../assets/css/qrcode.css" />
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="qrcode.min.js"></script>
+
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-card">
+      <p class="eyebrow">Armada Marketing Tools Portal</p>
+      <h1>QR Code Maker</h1>
+
+      <form id="auth-Form">
+        <div class="floating-field">
+          <input type="text" id="text" placeholder=" "  required />
+          <label for="url">URL</label>
+        </div>
+        <button type="button" id="generateQrBtn" class="auth-btn">Generate</button>
+      </form>
+      <div id="qrcode" class="qr-container"></div>
+      <p id="message" class="auth-message"></p>
+    </section>
+  </main>
+
+  <script type="text/javascript">
+const qrcode = new QRCode(document.getElementById("qrcode"), {
+    width: 300,
+    height: 300
+});
+
+function makeCode() {
+    const elText = document.getElementById("text");
+
+    if (!elText.value.trim()) {
+        alert("Input a text");
+        elText.focus();
+        return;
+    }
+
+    qrcode.clear(); // Remove previous QR code
+    qrcode.makeCode(elText.value);
+
+    document
+        .getElementById("qrcode")
+        .classList.add("visible");
+
+}
+
+document
+    .getElementById("generateQrBtn")
+    .addEventListener("click", makeCode);
+    </script>
+</body>
+</html>

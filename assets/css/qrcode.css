@@ -1,0 +1,368 @@
+:root {
+  --ink: #142033;
+  --muted: #637083;
+  --line: #dbe3ee;
+  --navy: #101828;
+  --soft: #f6f8fb;
+  --danger: #915F6D;
+  --success: #3F8C6B;
+  --warning: orange;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(16,24,40,.08), transparent 34%),
+    linear-gradient(135deg, #eef2f7 0%, #f9fbfd 100%);
+}
+*/
+
+body {
+  margin: 0;
+  font-family: "Public Sans", sans-serif;
+  color: white !important;
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(16,24,40,.35),
+      rgba(16,24,40,.35)
+    ),
+    url("../images/Triton-1920.jpg");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: -1;
+}
+
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  padding: 34px;
+
+  background: rgba(16, 24, 40, 0.25);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.eyebrow {
+  margin: 0 0 28px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .72rem;
+  font-weight: 700;
+  color: rgb(140, 215, 215);
+}
+
+h1 {
+  margin: 0 0 24px;
+  color: var(--navy);
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+  color: var(--ink);
+  font-size: .92rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 13px 14px;
+
+  background: rgba(255,255,255,.08);
+
+  border: 1px solid rgba(255,255,255,.10);
+
+  color: white;
+
+  border-radius: 13px;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,.45);
+}
+
+input:focus {
+  outline: none;
+
+  border-color: rgba(255,255,255,.25);
+
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,.05);
+}
+
+.auth-btn {
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  border-radius: 13px;
+  background: var(--navy);
+  background: rgba(140, 215, 215,0.12);
+  border: 1px solid rgba(255,255,255,.08);
+  color: white;
+  font-weight: 600;
+  font: inherit;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  background: #1f2937;
+}
+
+.inline-btn {
+  display: inline-block !important;
+  padding: 5px 16px;
+  border-radius: 5px;
+  background: var(--navy);
+  background: rgba(140, 215, 215,0.12);
+  border: 1px solid rgba(255,255,255,.08);
+  color: white;
+  font-weight: 600;
+  font: inherit;
+  cursor: pointer;
+}
+
+.auth-link {
+  margin: 50px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.auth-link a {
+  color: var(--navy);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-message {
+  margin: 0px 0 0;
+  text-align: center;
+  font-size: .92rem;
+}
+
+.auth-message.success {
+  color: var(--success);
+  margin: 10px 0 0;
+}
+
+.auth-message.danger {
+  color:var(--danger);
+  margin: 10px 0 0;
+}
+
+.auth-message.warning {
+  color:var(--warning);
+  margin: 10px 0 0;
+}
+
+.auth-message.error {
+  color: var(--danger);
+}
+
+
+/* mods */ 
+.auth-card h1 {
+  color: white;
+}
+
+.auth-card label {
+  color: rgba(255,255,255,.85);
+}
+
+.auth-link {
+  color: rgba(255,255,255,.65);
+}
+
+.auth-link a {
+  color: cyan;
+}
+
+.floating-field {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.floating-field input {
+  width: 100%;
+  padding: 18px 14px 10px;
+
+  background: rgba(255,255,255,.08);
+  color: white;
+
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 13px;
+
+  font: inherit;
+}
+
+.floating-field label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: rgba(255,255,255,.55);
+  font-size: .95rem;
+  font-weight: 500;
+
+  pointer-events: none;
+
+  transition:
+    top .16s ease,
+    transform .16s ease,
+    font-size .16s ease,
+    color .16s ease;
+}
+
+.floating-field input:focus {
+  outline: none;
+  border-color: rgba(255,255,255,.28);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.06);
+}
+
+.floating-field input:focus + label,
+.floating-field input:not(:placeholder-shown) + label {
+  top: 8px;
+  transform: translateY(0);
+
+  font-size: .72rem;
+  color: rgba(255,255,255,.78);
+}
+
+.auth-spinner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin-top: 14px;
+
+  color: rgba(255,255,255,.78);
+  font-size: .9rem;
+}
+
+.auth-spinner-wrap p {
+  color: rgb(140, 215, 215);
+}
+
+.auth-spinner {
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid rgba(255,255,255,.22);
+  border-top-color: rgba(255,255,255,.9);
+
+  border-radius: 50%;
+
+  animation: authSpin .8s linear infinite;
+}
+
+@keyframes authSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+
+
+
+.qr-container {
+    width: 100%;
+    min-height: 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20px;
+    padding: 20px;
+
+    border: 1px solid #e8edf3;
+    border-radius: 16px;
+    background: #ffffff;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+}
+
+#qrcode {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 20px;
+    margin-top: 20px;
+
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background: #ffffff;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.4s ease,
+        padding 0.4s ease,
+        opacity 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#qrcode.visible {
+    max-height: 500px;
+    padding: 24px;
+
+    border-color: #e8edf3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    opacity: 1;
+}
