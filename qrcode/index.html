@@ -23,7 +23,10 @@
         </div>
         <button type="button" id="generateQrBtn" class="auth-btn">Generate</button>
       </form>
-      <div id="qrcode" class="qr-container"></div>
+      <div id="qrcodeBlock" class="hidden">
+        <div id="qrcode" class="qr-container" style="margin-bottom: 20px;"></div>
+        <button type="button" id="downloadQrBtn" class="auth-btn" onclick="downloadQRCode_Polished()">Download</button>
+      </div>
       <p id="message" class="auth-message"></p>
     </section>
   </main>
@@ -33,6 +36,7 @@ const qrcode = new QRCode(document.getElementById("qrcode"), {
     width: 300,
     height: 300
 });
+
 
 function makeCode() {
     const elText = document.getElementById("text");
@@ -50,11 +54,18 @@ function makeCode() {
         .getElementById("qrcode")
         .classList.add("visible");
 
+    document
+        .getElementById("qrcodeBlock")
+        .classList.remove("hidden");
+    
+
 }
 
 document
     .getElementById("generateQrBtn")
     .addEventListener("click", makeCode);
     </script>
+
+    <script src="../assets/js/qrcode.js"></script>
 </body>
 </html>
