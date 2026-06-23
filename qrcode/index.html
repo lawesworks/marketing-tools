@@ -6,26 +6,26 @@
   <title>Armada QRCode Generator</title>
   <link rel="stylesheet" href="../assets/css/qrcode.css" />
 
-  <script type="text/javascript" src="jquery.min.js"></script>
-  <script type="text/javascript" src="qrcode.min.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../assets/js/qrcode.min.js"></script>
 
 </head>
 <body>
   <main class="auth-shell">
     <section class="auth-card">
-      <p class="eyebrow">Armada Marketing Tools Portal</p>
-      <h1>QR Code Maker</h1>
+      <p class="eyebrow">Customer Engineering Team</p>
+      <h1>QR Codes</h1>
 
       <form id="auth-Form">
         <div class="floating-field">
           <input type="text" id="qrText" placeholder=" "  required />
-          <label for="url">URL</label>
+          <label for="qrText">Text</label>
         </div>
         <button type="button" id="generateQrBtn" class="auth-btn">Generate</button>
         <p id="message" class="auth-message"></p>
       </form>
       <div id="qrcodeBlock" class="hidden">
-        <div id="qrcode" class="qr-container" style="margin-bottom: 20px;"></div>
+        <div id="qrcode" class="qr-container" style="margin-bottom: 30px;"></div>
         <button type="button" id="downloadQrBtn" class="auth-btn" onclick="downloadQRCode_Polished()">Download</button>
         
       </div>
@@ -40,14 +40,23 @@
               height: 300
           });
 
+          const qrcodeDiv = document.getElementById('qrcode');
+          const msg = document.getElementById("message");
+
 
           function makeCode() {
               const elText = document.getElementById("qrText");
+              qrcode.clear();
 
+              
               if (!elText.value.trim()) {
                   document.getElementById("qrText").classList.add("error");
-                  document.getElementById("message").classList.add("danger");
-                  document.getElementById("message").textContent = "Please enter text string into the field"
+                  msg.classList.remove("success", "warning");
+                  msg.classList.add("danger");
+                  msg.classList.remove("hidden");
+                  document.getElementById("message").textContent = "Text field cannot be empty"
+         
+                  document.getElementById("qrcodeBlock").classList.add("hidden");
                   //elText.focus();
                   return;
               }
@@ -55,23 +64,27 @@
               qrcode.clear(); // Remove previous QR code
               qrcode.makeCode(elText.value);
 
-              document
-                  .getElementById("qrcode")
-                  .classList.add("visible");
+              document.getElementById("qrText").classList.remove("error");
+              document.getElementById("qrcode").classList.add("visible");
+              document.getElementById("qrcodeBlock").classList.remove("hidden");
+              msg.classList.remove("danger", "warning");
+              msg.classList.add("success");
+              msg.classList.add("hidden");
+              document.getElementById("message").textContent = ""
 
-              document
-                  .getElementById("qrcodeBlock")
-                  .classList.remove("hidden");
-
-                  document.getElementById("message").classList.add("success");
-                  document.getElementById("message").textContent = "Click download to save as a PNG"
           }
 
-          document
-              .getElementById("generateQrBtn")
-              .addEventListener("click", makeCode);
+          document.getElementById("generateQrBtn").addEventListener("click", makeCode);
+
+          document.getElementById("qrText").addEventListener("keydown", function (e) {
+              if (e.key === "Enter") {
+                  e.preventDefault();
+                  document.getElementById("generateQrBtn").click();
+              }
+          });
+
     </script>
 
-    <script src="../assets/js/qrcode.js"></script>
+    <script src="../assets/js/qrcode-custom.js"></script>
 </body>
 </html>

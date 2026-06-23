@@ -1,46 +1,91 @@
-# QRCode.js
-QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM.
-QRCode.js has no dependencies.
+# Armada QR Code Generator
 
-## Basic Usages
-```
-<div id="qrcode"></div>
-<script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
-</script>
-```
+A lightweight web-based QR Code Generator for creating and downloading QR codes for URLs, WiFi networks, contact information, and other supported QR payload formats.
 
-or with some options
+## Features
 
-```
-<div id="qrcode"></div>
-<script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: "http://jindo.dev.naver.com/collie",
-	width: 128,
-	height: 128,
-	colorDark : "#000000",
-	colorLight : "#ffffff",
-	correctLevel : QRCode.CorrectLevel.H
-});
-</script>
+* Generate QR codes directly in the browser
+* Supports URLs, text, and other QR-compatible data formats
+* Download generated QR codes as PNG images
+* Clean modern user interface
+* No backend required
+* Fully client-side operation
+
+## Current Capabilities
+
+### URL QR Codes
+
+Generate QR codes that open websites when scanned.
+
+Example:
+
+```text
+https://armada.ai
 ```
 
-and you can use some methods
+### Text QR Codes
 
-```
-qrcode.clear(); // clear the code.
-qrcode.makeCode("http://naver.com"); // make another code.
+Generate QR codes containing plain text.
+
+Example:
+
+```text
+Armada Vision AI Demo
 ```
 
-## Browser Compatibility
-IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.
+### WiFi QR Codes
+
+Generate QR codes that allow smartphones to join WiFi networks without manually entering credentials.
+
+Example:
+
+```text
+WIFI:T:WPA;S:ArmadaGuest;P:Password123;;
+```
+
+## Downloading QR Codes
+
+Generated QR codes can be downloaded as PNG images with:
+
+* White padded background
+* Rounded corners
+* Presentation-ready formatting
+
+## Technology Stack
+
+* HTML5
+* CSS3
+* JavaScript
+* jQuery
+* QRCode.js
+
+## Project Structure
+
+```text
+qrcode/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── index.html
+├── qrcode.js
+├── qrcode.min.js
+└── README.md
+```
+
+## Future Enhancements
+
+Planned QR code templates include:
+
+* Contact Cards (vCard)
+* Email
+* SMS
+* Phone Numbers
+* Google Maps Locations
+* PDF Downloads
+* Calendar Events
+* App Store Links
 
 ## License
-MIT License
 
-## Contact
-twitter @davidshimjs
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/davidshimjs/qrcodejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+This project utilizes the open-source QRCode.js library and is intended for internal marketing, sales, and demonstration workflows.

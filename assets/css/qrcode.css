@@ -350,7 +350,8 @@ input.error {
     margin-top: 20px;
 
     border: 1px solid transparent;
-    border-radius: 16px;
+    /*border-radius: 16px;*/
+    border-radius: 0px;
     background: #ffffff;
 
     opacity: 0;
