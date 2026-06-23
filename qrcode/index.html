@@ -18,52 +18,58 @@
 
       <form id="auth-Form">
         <div class="floating-field">
-          <input type="text" id="text" placeholder=" "  required />
+          <input type="text" id="qrText" placeholder=" "  required />
           <label for="url">URL</label>
         </div>
         <button type="button" id="generateQrBtn" class="auth-btn">Generate</button>
+        <p id="message" class="auth-message"></p>
       </form>
       <div id="qrcodeBlock" class="hidden">
         <div id="qrcode" class="qr-container" style="margin-bottom: 20px;"></div>
         <button type="button" id="downloadQrBtn" class="auth-btn" onclick="downloadQRCode_Polished()">Download</button>
+        
       </div>
-      <p id="message" class="auth-message"></p>
+      
     </section>
   </main>
 
-  <script type="text/javascript">
-const qrcode = new QRCode(document.getElementById("qrcode"), {
-    width: 300,
-    height: 300
-});
+    <script type="text/javascript">
+
+          const qrcode = new QRCode(document.getElementById("qrcode"), {
+              width: 300,
+              height: 300
+          });
 
 
-function makeCode() {
-    const elText = document.getElementById("text");
+          function makeCode() {
+              const elText = document.getElementById("qrText");
 
-    if (!elText.value.trim()) {
-        alert("Input a text");
-        elText.focus();
-        return;
-    }
+              if (!elText.value.trim()) {
+                  document.getElementById("qrText").classList.add("error");
+                  document.getElementById("message").classList.add("danger");
+                  document.getElementById("message").textContent = "Please enter text string into the field"
+                  //elText.focus();
+                  return;
+              }
 
-    qrcode.clear(); // Remove previous QR code
-    qrcode.makeCode(elText.value);
+              qrcode.clear(); // Remove previous QR code
+              qrcode.makeCode(elText.value);
 
-    document
-        .getElementById("qrcode")
-        .classList.add("visible");
+              document
+                  .getElementById("qrcode")
+                  .classList.add("visible");
 
-    document
-        .getElementById("qrcodeBlock")
-        .classList.remove("hidden");
-    
+              document
+                  .getElementById("qrcodeBlock")
+                  .classList.remove("hidden");
 
-}
+                  document.getElementById("message").classList.add("success");
+                  document.getElementById("message").textContent = "Click download to save as a PNG"
+          }
 
-document
-    .getElementById("generateQrBtn")
-    .addEventListener("click", makeCode);
+          document
+              .getElementById("generateQrBtn")
+              .addEventListener("click", makeCode);
     </script>
 
     <script src="../assets/js/qrcode.js"></script>
