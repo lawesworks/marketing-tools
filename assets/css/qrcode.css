@@ -7,6 +7,7 @@
   --danger: #915F6D;
   --success: #3F8C6B;
   --warning: orange;
+  --emphasis: #8CD7D7;
 }
 
 * {
@@ -229,7 +230,7 @@ input.error {
 
 .floating-field input {
   width: 100%;
-  padding: 18px 14px 10px;
+  padding: 30px 14px 10px;
 
   background: rgba(255,255,255,.08);
   color: white;
@@ -271,8 +272,8 @@ input.error {
   top: 8px;
   transform: translateY(0);
 
-  font-size: .72rem;
-  color: rgba(255,255,255,.78);
+  font-size: .78rem;
+  color: rgba(140, 215, 215,.78);
 }
 
 .auth-spinner-wrap {
@@ -372,4 +373,8 @@ input.error {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 
     opacity: 1;
+}
+
+#qrcode img {
+  
 }
