@@ -374,3 +374,32 @@ input.error {
 
     opacity: 1;
 }
+
+
+#qrcode canvas,
+#qrcode img {
+    width: min(300px, 100%);
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 480px) {
+    #qrcode.visible {
+        padding: 16px;
+    }
+
+    #qrcode canvas,
+    #qrcode img {
+        max-width: calc(100vw - 96px);
+        height: auto;
+    }
+}
+
+@media (max-width: 325px) {
+    #qrcode.visible {
+        padding: 10px;
+    }
+    h1{
+      font-size: 1.1rem;
+    }
+}
